@@ -1,6 +1,5 @@
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
-import FloatingControls from "@/components/FloatingControls";
 
 export const metadata = {
   title: "PT Bumi Sada Mineral | Resources & Energy Trading",
@@ -30,7 +29,6 @@ export default function RootLayout({ children }) {
       <body className="bg-surface font-body-md text-body-md text-on-surface antialiased">
         <LanguageProvider>
           {children}
-          <FloatingControls />
         </LanguageProvider>
       </body>
     </html>

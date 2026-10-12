@@ -8,6 +8,13 @@ export const dictionaries = {
       dark: "Dark",
       langGroup: "Language",
     },
+    navUi: {
+      inquire: "Inquire Supply",
+      open: "Open navigation menu",
+      close: "Close navigation menu",
+      main: "Main navigation",
+      mobile: "Mobile navigation",
+    },
     hero: {
       badge: "EST. JUNE 09, 2023 • INDONESIA COMMODITY & MATERIAL TRADING",
       line1: "From Resources to Industry.",
@@ -150,6 +157,13 @@ export const dictionaries = {
       light: "Terang",
       dark: "Gelap",
       langGroup: "Bahasa",
+    },
+    navUi: {
+      inquire: "Ajukan Pasokan",
+      open: "Buka menu navigasi",
+      close: "Tutup menu navigasi",
+      main: "Navigasi utama",
+      mobile: "Navigasi seluler",
     },
     hero: {
       badge: "SEJAK 09 JUNI 2023 • PERDAGANGAN KOMODITAS & MATERIAL INDONESIA",

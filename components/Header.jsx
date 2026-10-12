@@ -13,8 +13,7 @@ export default function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 h-[var(--header-h)] border-b border-on-surface/15 bg-surface-container-lowest">
-        <div className="relative grid h-full w-full grid-cols-[1fr_auto] items-center px-4 sm:px-6 lg:px-10 2xl:px-16 xl:grid-cols-[1fr_auto_1fr]">
-          <Link href="/" aria-label="PT Bumi Sada Mineral" className="flex w-fit shrink-0 items-center gap-3">
+          <div className="relative grid h-full w-full grid-cols-[1fr_auto] items-center gap-4 px-4 sm:px-6 lg:px-10 2xl:px-16 xl:grid-cols-[auto_1fr_auto]">            <Link href="/" aria-label="PT Bumi Sada Mineral" className="flex w-fit shrink-0 items-center gap-3">
             <Image
               src="/icon.png"
               alt="Bumi Sada Mineral logo"
