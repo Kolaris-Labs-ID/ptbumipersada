@@ -2,6 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Palet LIGHT (default). .keep-light = area yang selalu pakai palet terang/brand, apa pun temanya ===== */
+:root,
+.keep-light {
+  color-scheme: light;
+  --c-surface: 248 249 255;
+  --c-background: 248 249 255;
+  --c-surface-bright: 248 249 255;
+  --c-surface-dim: 205 219 240;
+  --c-surface-container-lowest: 255 255 255;
+  --c-surface-container-low: 238 244 255;
+  --c-surface-container: 229 239 255;
+  --c-surface-container-high: 219 233 254;
+  --c-surface-container-highest: 214 228 249;
+  --c-surface-variant: 214 228 249;
+  --c-on-surface: 15 28 44;
+  --c-on-surface-variant: 86 66 59;
+  --c-on-background: 15 28 44;
+  --c-outline: 137 114 106;
+  --c-outline-variant: 220 193 183;
+  --c-primary: 154 64 24;
+  --c-primary-container: 186 88 46;
+  --c-on-primary: 255 255 255;
+  --c-on-primary-container: 255 251 255;
+  --c-primary-fixed: 255 219 206;
+  --c-primary-fixed-dim: 255 181 153;
+  --c-secondary: 63 102 83;
+  --c-on-secondary: 255 255 255;
+  --c-secondary-container: 190 234 209;
+  --c-secondary-fixed: 193 236 212;
+  --c-secondary-fixed-dim: 165 208 185;
+  --c-tertiary: 126 83 0;
+  --c-on-tertiary: 255 255 255;
+  --c-tertiary-fixed: 255 221 178;
+  --c-tertiary-fixed-dim: 249 187 97;
+  --c-tertiary-container: 156 107 21;
+}
+
+/* ===== Palet DARK. .follow-theme = elemen di dalam .keep-light yang tetap ikut tema (kartu form, bar statistik) ===== */
+.dark,
+.dark .follow-theme {
+  color-scheme: dark;
+  --c-surface: 11 18 32;
+  --c-background: 11 18 32;
+  --c-surface-bright: 33 45 66;
+  --c-surface-dim: 8 14 25;
+  --c-surface-container-lowest: 22 33 51;
+  --c-surface-container-low: 15 24 39;
+  --c-surface-container: 28 42 64;
+  --c-surface-container-high: 36 51 80;
+  --c-surface-container-highest: 43 61 92;
+  --c-surface-variant: 43 61 92;
+  --c-on-surface: 230 237 248;
+  --c-on-surface-variant: 185 195 211;
+  --c-on-background: 230 237 248;
+  --c-outline: 138 150 168;
+  --c-outline-variant: 58 72 96;
+  --c-primary: 224 122 77;
+  --c-primary-container: 240 150 112;
+  --c-on-primary: 42 13 0;
+  --c-on-primary-container: 42 13 0;
+  --c-primary-fixed: 74 36 20;
+  --c-primary-fixed-dim: 255 181 153;
+  --c-secondary: 140 196 168;
+  --c-on-secondary: 10 36 24;
+  --c-secondary-container: 39 78 61;
+  --c-secondary-fixed: 39 78 61;
+  --c-secondary-fixed-dim: 165 208 185;
+  --c-tertiary: 240 180 92;
+  --c-on-tertiary: 61 40 0;
+  --c-tertiary-fixed: 74 52 10;
+  --c-tertiary-fixed-dim: 249 187 97;
+  --c-tertiary-container: 156 107 21;
+}
+
 :root { --header-h: 84px; --topbar-h: 36px; }
 @media (max-width: 767px) { :root { --header-h: 72px; } }
 html { scroll-behavior: smooth; scroll-padding-top: 0; }
@@ -9,3 +83,11 @@ section[id] { scroll-margin-top: var(--header-h); }
 body { overscroll-behavior: none; }
 ::-webkit-scrollbar { display: none; }
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+/* Transisi halus saat ganti tema (class dipasang sementara oleh ThemeToggle) */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, fill 200ms ease !important;
+}

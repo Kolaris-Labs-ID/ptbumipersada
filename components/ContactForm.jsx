@@ -11,7 +11,7 @@ export default function ContactForm() {
   const onSubmit = (e) => { e.preventDefault(); setSent(true); e.currentTarget.reset(); };
 
   return (
-    <div className="lg:col-span-6 bg-surface-container-lowest text-on-surface p-8 sm:p-10 rounded-xl shadow-2xl space-y-6">
+    <div className="follow-theme lg:col-span-6 bg-surface-container-lowest text-on-surface p-8 sm:p-10 rounded-xl shadow-2xl space-y-6">
       <div className="space-y-1">
         <h3 className="font-headline-md text-headline-md uppercase">Trade &amp; Supply Inquiry</h3>
         <p className="font-body-sm text-body-sm text-on-surface-variant">Submit corporate requirements directly to our Jakarta commercial desk.</p>

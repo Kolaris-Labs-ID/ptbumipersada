@@ -1,24 +1,36 @@
 const f = (size, lh, ls, w) => [size, { lineHeight: lh, letterSpacing: ls, fontWeight: w }];
+
+// Warna yang ikut berubah saat dark mode. Nilainya didefinisikan di globals.css (--c-<nama>)
+const themed = [
+  "surface", "background", "surface-bright", "surface-dim",
+  "surface-container-lowest", "surface-container-low", "surface-container",
+  "surface-container-high", "surface-container-highest", "surface-variant",
+  "on-surface", "on-surface-variant", "on-background", "outline", "outline-variant",
+  "primary", "primary-container", "on-primary", "on-primary-container",
+  "primary-fixed", "primary-fixed-dim",
+  "secondary", "on-secondary", "secondary-container", "secondary-fixed", "secondary-fixed-dim",
+  "tertiary", "on-tertiary", "tertiary-fixed", "tertiary-fixed-dim", "tertiary-container",
+];
+const themedColors = Object.fromEntries(
+  themed.map((n) => [n, `rgb(var(--c-${n}) / <alpha-value>)`])
+);
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: ["./app/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        "on-primary-fixed-variant": "#7e2c04", "on-surface-variant": "#56423b", "inverse-surface": "#243141",
-        "on-tertiary": "#ffffff", "on-tertiary-fixed": "#291800", "on-error": "#ffffff", "primary-fixed": "#ffdbce",
-        "tertiary-container": "#9c6b15", "on-secondary-fixed-variant": "#274e3d", "on-secondary-container": "#436b58",
-        "surface-container-lowest": "#ffffff", "on-tertiary-container": "#fffbff", "surface-container-low": "#eef4ff",
-        primary: "#9a4018", "secondary-fixed-dim": "#a5d0b9", "secondary-container": "#beead1",
-        "on-primary-fixed": "#370e00", "primary-fixed-dim": "#ffb599", "on-tertiary-fixed-variant": "#624000",
-        "secondary-fixed": "#c1ecd4", "surface-container-highest": "#d6e4f9", "inverse-primary": "#ffb599",
-        "surface-dim": "#cddbf0", "on-surface": "#0f1c2c", "tertiary-fixed-dim": "#f9bb61", "outline-variant": "#dcc1b7",
-        surface: "#f8f9ff", "primary-container": "#ba582e", "surface-container": "#e5efff", "surface-variant": "#d6e4f9",
-        "on-primary": "#ffffff", background: "#f8f9ff", error: "#ba1a1a", "surface-bright": "#f8f9ff",
-        "tertiary-fixed": "#ffddb2", "error-container": "#ffdad6", "on-primary-container": "#fffbff",
-        "surface-tint": "#9d431b", "on-secondary": "#ffffff", "inverse-on-surface": "#e9f1ff", outline: "#89726a",
-        "on-background": "#0f1c2c", tertiary: "#7e5300", "on-secondary-fixed": "#002114", secondary: "#3f6653",
-        "on-error-container": "#93000a", "surface-container-high": "#dbe9fe",
+        ...themedColors,
+        "on-primary-fixed-variant": "#7e2c04", "inverse-surface": "#243141",
+        "on-tertiary-fixed": "#291800", "on-error": "#ffffff",
+        "on-secondary-fixed-variant": "#274e3d", "on-secondary-container": "#436b58",
+        "on-tertiary-container": "#fffbff", "on-primary-fixed": "#370e00",
+        "on-tertiary-fixed-variant": "#624000", "inverse-primary": "#ffb599",
+        error: "#ba1a1a", "error-container": "#ffdad6", "surface-tint": "#9d431b",
+        "inverse-on-surface": "#e9f1ff", "on-secondary-fixed": "#002114",
+        "on-error-container": "#93000a",
       },
       borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
       fontFamily: {

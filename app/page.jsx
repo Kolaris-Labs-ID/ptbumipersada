@@ -18,13 +18,19 @@ const legalDetails = [
   ["Sector", "Commodity & Material Trading"],
 ];
 
+const OFFICE_ADDRESS =
+  "Prosperity Tower Lantai 9 Unit C, District 8 SCBD Lot 28, Jl. Jend. Sudirman Kav.52-53, Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta.";
+const MAPS_QUERY = encodeURIComponent("Prosperity Tower, District 8 SCBD, Jl. Jend. Sudirman Kav.52-53, Senayan, Jakarta Selatan");
+const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
+const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
+
 export default function Home() {
   return (
     <>
       <Header />
       <main className="w-full bg-surface">
         {/* HERO */}
-        <section id="home" className="relative w-full min-h-[calc(100svh_-_var(--header-h)_-_var(--topbar-h))] flex flex-col justify-between overflow-hidden bg-on-surface">
+        <section id="home" className="keep-light relative w-full min-h-[calc(100svh_-_var(--header-h)_-_var(--topbar-h))] flex flex-col justify-between overflow-hidden bg-on-surface">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${HERO_BG}')` }} />
           <div className="absolute inset-0 bg-gradient-to-r from-on-surface/95 via-on-surface/85 to-on-surface/50" />
           <div className="absolute inset-0 bg-gradient-to-t from-on-surface via-transparent to-on-surface/40" />
@@ -38,7 +44,7 @@ export default function Home() {
                 <span className="block xl:whitespace-nowrap">From Resources to Industry.</span>
                 <span className="block text-primary-fixed xl:whitespace-nowrap">From Supply to Opportunity.</span>
               </h1>
-              <p className="font-body-lg text-body-lg text-surface-container-high max-w-2xl font-light">
+              <p className="font-body-lg text-sm sm:text-base leading-relaxed text-surface-container-high max-w-2xl font-light">
                 Connecting market needs with resource availability seamlessly and sustainably through institutional grade procurement, rigorous assay control, and strategic nationwide logistics.
               </p>
               <div className="flex flex-wrap items-center gap-4 pt-4">
@@ -46,13 +52,10 @@ export default function Home() {
                   <span>Explore Our Services</span>
                   <Icon name="arrow_forward" className="text-[18px] group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-surface/10 hover:bg-surface/20 text-surface backdrop-blur-md font-headline-sm text-label-caps uppercase tracking-wider font-bold transition-all">
-                  <Icon name="domain" className="text-[18px]" /><span>Contact Us</span>
-                </a>
               </div>
             </div>
           </div>
-          <div className="relative z-10 w-full bg-surface-container-lowest/95 backdrop-blur-md shadow-xl py-6">
+          <div className="follow-theme relative z-10 w-full bg-surface-container-lowest/95 backdrop-blur-md shadow-xl py-6">
             <div className={`${wrap} grid grid-cols-2 md:grid-cols-4 gap-6`}>
               {stats.map(([big, icon, title, sub, bigC, iconC]) => (
                 <div key={title} className="flex flex-col">
@@ -70,40 +73,33 @@ export default function Home() {
 
         {/* ABOUT */}
         <section id="about" className="w-full bg-surface">
-          <div className={`${wrap} space-y-8 pt-20 pb-10 lg:pb-16`}>
+          <div className={`${wrap} space-y-8 pt-10 pb-10 lg:pt-12 lg:pb-16`}>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
               <div className="min-w-0">
                 <span className={`${eyebrow} text-primary`}>CORPORATE OVERVIEW</span>
                 <h2 className="mt-2 font-headline-lg text-[clamp(1.75rem,3vw,2.5rem)] leading-tight text-on-surface uppercase tracking-tight">ABOUT PT BUMI SADA MINERAL</h2>
               </div>
             </div>
-            <div className="grid grid-cols-1 items-start gap-x-12 gap-y-8 md:grid-cols-2 lg:gap-x-16">
-              <p className="min-w-0 font-body-lg text-body-lg leading-relaxed text-on-surface">Established in 2023, we support the commodity and material supply chain for industrial and development activities, connecting market needs with resource availability through strategic partnerships.</p>
-              <div className="flex min-w-0 flex-col items-start gap-2">
-                <span className={`${eyebrow} text-primary`}>LEGAL INCORPORATION</span>
-                <span className="block font-headline-lg text-headline-lg font-bold leading-none text-on-surface">JUNE 09, <span className="text-primary">2023</span></span>
-                <span className="block font-body-sm text-body-sm text-on-surface-variant">Established under Indonesian law.</span>
-                </div>
-            </div>
+            <p className="max-w-3xl min-w-0 font-body-lg text-body-lg leading-relaxed text-on-surface">Established in 2023, we support the commodity and material supply chain for industrial and development activities, connecting market needs with resource availability through strategic partnerships.</p>
           </div>
-          <div className="w-full bg-on-surface">
+          <div className="keep-light w-full bg-on-surface">
             <div className={`${wrap} grid min-w-0 grid-cols-1 md:grid-cols-3`}>
-                {legalDetails.map(([label, value]) => (
-                  <div key={label} className="min-w-0 border-b border-white/10 py-8 last:border-b-0 md:border-b-0 md:border-l md:first:border-l-0 md:pl-6 md:first:pl-0">
-                    <span className="block font-label-caps text-label-caps uppercase text-tertiary-fixed">{label}</span>
-                    <span className="mt-2 block break-words font-body-sm text-body-sm font-semibold text-white">{value}</span>
-                  </div>
-                ))}
+              {legalDetails.map(([label, value]) => (
+                <div key={label} className="min-w-0 border-b border-white/10 py-8 last:border-b-0 md:border-b-0 md:border-l md:first:border-l-0 md:pl-6 md:first:pl-0">
+                  <span className="block font-label-caps text-label-caps uppercase text-tertiary-fixed">{label}</span>
+                  <span className="mt-2 block break-words font-body-sm text-body-sm font-semibold text-white">{value}</span>
+                </div>
+              ))}
             </div>
           </div>
           <div className={`${wrap} grid min-w-0 grid-cols-1 gap-x-6 gap-y-8 py-10 sm:grid-cols-3 lg:py-12`}>
-                {pillars.map(([icon, color, title, text]) => (
-                  <div key={title} className="min-w-0 border-t border-slate-200 pt-4">
-                    <Icon name={icon} className={`${color} mb-2 text-[26px]`} />
-                    <h4 className="min-h-12 font-headline-sm text-lg leading-tight uppercase text-on-surface">{title}</h4>
-                    <p className="mt-2 font-body-sm text-body-sm text-on-surface-variant">{text}</p>
-                  </div>
-                ))}
+            {pillars.map(([icon, color, title, text]) => (
+              <div key={title} className="min-w-0 border-t border-slate-200 pt-4 dark:border-white/10">
+                <Icon name={icon} className={`${color} mb-2 text-[26px]`} />
+                <h4 className="font-headline-sm text-lg leading-tight uppercase text-on-surface">{title}</h4>
+                <p className="mt-2 font-body-sm text-body-sm text-on-surface-variant">{text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -143,12 +139,12 @@ export default function Home() {
         <section id="vision-mission" className="w-full py-28 bg-surface">
           <div className={wrap}>
             <div className="grid grid-cols-1 lg:grid-cols-12 rounded-xl overflow-hidden shadow-2xl">
-              <div className="relative isolate lg:col-span-5 overflow-hidden bg-on-surface text-surface p-6 lg:p-14 flex flex-col justify-between">
+              <div className="keep-light relative isolate lg:col-span-5 overflow-hidden bg-on-surface text-surface p-6 lg:p-14 flex flex-col justify-between">
                 <Icon name="visibility" className="absolute right-5 top-20 -z-10 text-[clamp(10rem,22vw,20rem)] leading-none text-surface opacity-[0.06] pointer-events-none" />
                 <div className="relative space-y-8">
                   <span className={`${eyebrow} text-surface/75`}>LONG-TERM ASPIRATION</span>
                   <h3 className={`${h2} text-surface`}>Our Vision</h3>
-                  <blockquote className="max-w-[28em] border-l-2 border-primary pl-4 text-[clamp(1.5rem,2.6vw,2.25rem)] leading-[1.3] italic text-white">
+                  <blockquote className="max-w-[28em] border-l-2 border-primary pl-4 text-[clamp(1.125rem,1.8vw,1.5rem)] leading-[1.45] italic text-white">
                     <span className="text-tertiary-fixed not-italic">“</span>To become a trusted commodity ecosystem driver that connects resources with industrial opportunities in creating sustainable industry needs.<span className="text-tertiary-fixed not-italic">”</span>
                   </blockquote>
                 </div>
@@ -211,7 +207,7 @@ export default function Home() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="w-full py-28 bg-on-surface text-surface">
+        <section id="contact" className="keep-light w-full py-28 bg-on-surface text-surface">
           <div className={`${wrap} space-y-20`}>
             <div>
               <span className={`${eyebrow} text-primary-fixed`}>COMMERCIAL TRADE DESK</span>
@@ -224,7 +220,36 @@ export default function Home() {
                   <p className="font-body-md text-body-md text-surface-container-high leading-relaxed">Headquartered in the premier financial district of South Jakarta, PT Bumi Sada Mineral operates direct trade corridors supporting national energy resilience and mineral processing infrastructure.</p>
                   <div>
                     <span className="font-label-caps text-label-caps uppercase text-primary-fixed tracking-widest block mb-2 font-bold">OFFICIAL DOMICILE</span>
-                    <address className="font-body-md text-body-md text-surface not-italic leading-relaxed">Prosperity Tower Lantai 9 Unit C, District 8 SCBD Lot 28, Jl. Jend. Sudirman Kav.52-53, Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta.</address>
+                    <address className="font-body-md text-body-md text-surface not-italic leading-relaxed">
+                      <a
+                        href={MAPS_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline-offset-4 hover:text-primary-fixed hover:underline transition-colors"
+                        aria-label="Open office address in Google Maps (opens in a new tab)"
+                      >
+                        {OFFICE_ADDRESS}
+                      </a>
+                    </address>
+                    <a
+                      href={MAPS_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-2 font-label-caps text-label-caps uppercase tracking-wider font-bold text-primary-fixed hover:underline underline-offset-4"
+                    >
+                      <span>Open in Google Maps</span>
+                      <Icon name="arrow_forward" className="text-[16px]" />
+                    </a>
+                  </div>
+                  <div className="w-full overflow-hidden rounded-lg">
+                    <iframe
+                      title="Map: PT Bumi Sada Mineral office, District 8 SCBD, Jakarta"
+                      src={MAPS_EMBED}
+                      className="block h-[300px] w-full border-0 sm:h-[360px]"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                    />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -1,4 +1,5 @@
 import "./globals.css";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata = {
   title: "PT Bumi Sada Mineral | Resources & Energy Trading",
@@ -6,10 +7,14 @@ export const metadata = {
     "Connecting market needs with resource availability through strategic commodity and material trading in Indonesia.",
 };
 
+// Jalan sebelum halaman tampil, supaya tidak ada kedipan tema yang salah
+const themeInit = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
@@ -21,7 +26,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="bg-surface font-body-md text-body-md text-on-surface antialiased">{children}</body>
+      <body className="bg-surface font-body-md text-body-md text-on-surface antialiased">
+        {children}
+        <ThemeToggle />
+      </body>
     </html>
   );
 }
