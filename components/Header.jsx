@@ -1,17 +1,19 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import HeaderNavigation from "./HeaderNavigation";
+import { useLang } from "./LanguageProvider";
 
-const NAV = [
-  ["Home", "#home"], ["About Us", "#about"], ["Services & Commodities", "#services"],
-  ["Vision & Mission", "#vision-mission"], ["Why Us", "#why-us"], ["Contact", "#contact"],
-];
+const HREFS = ["#home", "#about", "#services", "#vision-mission", "#why-us", "#contact"];
 
 export default function Header() {
+  const { d } = useLang();
+  const navItems = d.nav.map((label, i) => [label, HREFS[i]]);
+
   return (
     <>
       <header className="sticky top-0 z-50 h-[var(--header-h)] border-b border-on-surface/15 bg-surface-container-lowest">
-        <div className="relative mx-auto grid h-full max-w-7xl grid-cols-[1fr_auto] items-center px-6 lg:px-12 xl:grid-cols-[1fr_auto_1fr]">
+        <div className="relative grid h-full w-full grid-cols-[1fr_auto] items-center px-4 sm:px-6 lg:px-10 2xl:px-16 xl:grid-cols-[1fr_auto_1fr]">
           <Link href="/" aria-label="PT Bumi Sada Mineral" className="flex w-fit shrink-0 items-center gap-3">
             <Image
               src="/icon.png"
@@ -30,7 +32,7 @@ export default function Header() {
               </span>
             </span>
           </Link>
-          <HeaderNavigation navItems={NAV} />
+          <HeaderNavigation navItems={navItems} />
         </div>
       </header>
     </>

@@ -1,5 +1,6 @@
 import "./globals.css";
-import ThemeToggle from "@/components/ThemeToggle";
+import { LanguageProvider } from "@/components/LanguageProvider";
+import FloatingControls from "@/components/FloatingControls";
 
 export const metadata = {
   title: "PT Bumi Sada Mineral | Resources & Energy Trading",
@@ -27,8 +28,10 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="bg-surface font-body-md text-body-md text-on-surface antialiased">
-        {children}
-        <ThemeToggle />
+        <LanguageProvider>
+          {children}
+          <FloatingControls />
+        </LanguageProvider>
       </body>
     </html>
   );
