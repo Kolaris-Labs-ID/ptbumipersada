@@ -2,6 +2,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 
 export const metadata = {
+  metadataBase: new URL("https://bumisadamineral.co"),
   title: "PT Bumi Sada Mineral | Resources & Energy Trading",
   description:
     "Connecting market needs with resource availability through strategic commodity and material trading in Indonesia.",
@@ -27,9 +28,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="bg-surface font-body-md text-body-md text-on-surface antialiased">
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

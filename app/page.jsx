@@ -6,7 +6,7 @@ import Icon from "@/components/Icon";
 import { useLang } from "@/components/LanguageProvider";
 import {
   serviceIcons, pillarMeta, missionClasses, advantageMeta, statMeta, pipelineMeta,
-  OFFICE_ADDRESS, MAPS_LINK, MAPS_EMBED, PHONE, EMAIL,
+  MAPS_LINK, MAPS_EMBED, PHONE, PHONE_HREF, EMAIL, EMAIL_HREF,
 } from "@/components/data";
 
 const HERO_BG = "/hero-bg.webp";
@@ -233,7 +233,7 @@ export default function Home() {
                         className="underline-offset-4 hover:text-primary-fixed hover:underline transition-colors"
                         aria-label={d.contact.mapsAria}
                       >
-                        {OFFICE_ADDRESS}
+                        {d.contact.address}
                       </a>
                     </address>
                     <a
@@ -259,12 +259,14 @@ export default function Home() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    ["call", d.contact.phoneLabel, PHONE, d.contact.phoneSub],
-                    ["mail", d.contact.emailLabel, EMAIL, d.contact.emailSub],
-                  ].map(([icon, label, v, sub]) => (
+                    ["call", d.contact.phoneLabel, PHONE, PHONE_HREF, d.contact.phoneSub],
+                    ["mail", d.contact.emailLabel, EMAIL, EMAIL_HREF, d.contact.emailSub],
+                  ].map(([icon, label, v, href, sub]) => (
                     <div key={icon} className="bg-surface/5 p-6 rounded backdrop-blur-md space-y-2">
                       <div className="flex items-center gap-2 text-primary-fixed"><Icon name={icon} className="text-[20px]" /><span className="font-label-caps text-label-caps uppercase tracking-wider">{label}</span></div>
-                      <p className="font-title-md text-title-md text-surface font-semibold break-all">{v}</p>
+                      <p className="font-title-md text-title-md text-surface font-semibold break-all">
+                        <a href={href} className="underline-offset-4 transition-colors hover:text-primary-fixed hover:underline">{v}</a>
+                      </p>
                       <span className="font-body-sm text-body-sm text-surface-container-high block">{sub}</span>
                     </div>
                   ))}

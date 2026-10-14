@@ -37,13 +37,13 @@ export const pipelineMeta = [
   ["factory", "bg-secondary/20 text-secondary"],
 ];
 
-export const OFFICE_ADDRESS =
-  "Prosperity Tower Lantai 9 Unit C, District 8 SCBD Lot 28, Jl. Jend. Sudirman Kav.52-53, Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta.";
 const MAPS_QUERY = encodeURIComponent(
-  "Prosperity Tower, District 8 SCBD, Jl. Jend. Sudirman Kav.52-53, Senayan, Jakarta Selatan"
+  "Treasury Tower, District 8 SCBD, Jl. Jend. Sudirman, Senayan, Jakarta Selatan"
 );
 export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
 export const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
 
-export const PHONE = "+62 21 5088 2800";
-export const EMAIL = "corporate@bumisadamineral.com";
+export const PHONE = "+62 21 5030 0844";
+export const PHONE_HREF = "tel:+622150300844";
+export const EMAIL = "ptbumisadamineral@gmail.com";
+export const EMAIL_HREF = "mailto:ptbumisadamineral@gmail.com";

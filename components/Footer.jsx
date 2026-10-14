@@ -1,6 +1,6 @@
 "use client";
 import { useLang } from "./LanguageProvider";
-import { MAPS_LINK } from "./data";
+import { MAPS_LINK, PHONE, PHONE_HREF, EMAIL, EMAIL_HREF } from "./data";
 
 export default function Footer() {
   const { d } = useLang();
@@ -36,7 +36,12 @@ export default function Footer() {
                 <p key={line}>{line}</p>
               ))}
             </a>
-            <p className="pt-2 font-label-mono-stat text-label-mono-stat text-primary">T: +62 21 5140 8800</p>
+            <p className="pt-2 font-label-mono-stat text-label-mono-stat text-primary">
+              <a href={PHONE_HREF} className="hover:underline underline-offset-4">T: {PHONE}</a>
+            </p>
+            <p className="font-label-mono-stat text-label-mono-stat text-primary break-all">
+              <a href={EMAIL_HREF} className="hover:underline underline-offset-4">E: {EMAIL}</a>
+            </p>
           </address>
         </div>
       </div>

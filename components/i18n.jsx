@@ -1,19 +1,19 @@
 export const dictionaries = {
   en: {
     nav: ["Home", "About Us", "Services & Commodities", "Vision & Mission", "Why Us", "Contact"],
-    theme: {
-      toLight: "Switch to light mode",
-      toDark: "Switch to dark mode",
-      light: "Light",
-      dark: "Dark",
-      langGroup: "Language",
-    },
     navUi: {
       inquire: "Inquire Supply",
       open: "Open navigation menu",
       close: "Close navigation menu",
       main: "Main navigation",
       mobile: "Mobile navigation",
+    },
+    theme: {
+      toLight: "Switch to light mode",
+      toDark: "Switch to dark mode",
+      light: "Light",
+      dark: "Dark",
+      langGroup: "Language",
     },
     hero: {
       badge: "EST. JUNE 09, 2023 • INDONESIA COMMODITY & MATERIAL TRADING",
@@ -25,7 +25,7 @@ export const dictionaries = {
     stats: [
       { big: "100%", title: "Supply Reliability", sub: "& Regulatory Compliance" },
       { big: "Multi", title: "Commodity Network", sub: "Integrated Trading & Logistics" },
-      { big: "SCBD", title: "Jakarta Headquarters", sub: "Prosperity Tower District 8" },
+      { big: "SCBD", title: "Jakarta Headquarters", sub: "Treasury Tower District 8" },
       { big: "Adaptive", title: "Strategic Trade", sub: "Industrial Supply Partnerships" },
     ],
     about: {
@@ -106,6 +106,7 @@ export const dictionaries = {
       title: "Connect with Our Executive Trade Office",
       intro: "Headquartered in the premier financial district of South Jakarta, PT Bumi Sada Mineral operates direct trade corridors supporting national energy resilience and mineral processing infrastructure.",
       domicile: "OFFICIAL DOMICILE",
+      address: "Treasury Tower, Floor 16, District 8 SCBD Lot 28, Jl. Jend. Sudirman, Senayan, Kebayoran Baru, South Jakarta, DKI Jakarta.",
       mapsOpen: "Open in Google Maps",
       mapsAria: "Open office address in Google Maps (opens in a new tab)",
       mapTitle: "Map: PT Bumi Sada Mineral office, District 8 SCBD, Jakarta",
@@ -142,7 +143,7 @@ export const dictionaries = {
       opsHeading: "Operations & Legal",
       links: ["Mineral Portfolios", "ESG & Traceability", "Compliance & Export Permits"],
       officeHeading: "Executive Office",
-      address: ["District 8 Treasury Tower, Floor 28", "SCBD Lot 28, Jl. Jend. Sudirman Kav. 52-53", "Jakarta Selatan 12190, Indonesia"],
+      address: ["Treasury Tower, Floor 16", "District 8 SCBD Lot 28", "Jl. Jend. Sudirman, South Jakarta"],
       mapsAria: "Open office address in Google Maps (opens in a new tab)",
       copyright: "© 2025 PT Bumi Sada Mineral. All Rights Reserved.",
       desk: "District 8 SCBD • Commodity Trade Desk",
@@ -151,19 +152,19 @@ export const dictionaries = {
 
   id: {
     nav: ["Beranda", "Tentang Kami", "Layanan & Komoditas", "Visi & Misi", "Mengapa Kami", "Kontak"],
-    theme: {
-      toLight: "Ganti ke mode terang",
-      toDark: "Ganti ke mode gelap",
-      light: "Terang",
-      dark: "Gelap",
-      langGroup: "Bahasa",
-    },
     navUi: {
       inquire: "Ajukan Pasokan",
       open: "Buka menu navigasi",
       close: "Tutup menu navigasi",
       main: "Navigasi utama",
       mobile: "Navigasi seluler",
+    },
+    theme: {
+      toLight: "Ganti ke mode terang",
+      toDark: "Ganti ke mode gelap",
+      light: "Terang",
+      dark: "Gelap",
+      langGroup: "Bahasa",
     },
     hero: {
       badge: "SEJAK 09 JUNI 2023 • PERDAGANGAN KOMODITAS & MATERIAL INDONESIA",
@@ -175,7 +176,7 @@ export const dictionaries = {
     stats: [
       { big: "100%", title: "Keandalan Pasokan", sub: "& Kepatuhan Regulasi" },
       { big: "Multi", title: "Jaringan Komoditas", sub: "Perdagangan & Logistik Terintegrasi" },
-      { big: "SCBD", title: "Kantor Pusat Jakarta", sub: "Prosperity Tower District 8" },
+      { big: "SCBD", title: "Kantor Pusat Jakarta", sub: "Treasury Tower District 8" },
       { big: "Adaptif", title: "Perdagangan Strategis", sub: "Kemitraan Pasokan Industri" },
     ],
     about: {
@@ -256,6 +257,7 @@ export const dictionaries = {
       title: "Hubungi Kantor Perdagangan Eksekutif Kami",
       intro: "Berkantor pusat di distrik keuangan utama Jakarta Selatan, PT Bumi Sada Mineral mengoperasikan koridor perdagangan langsung yang mendukung ketahanan energi nasional dan infrastruktur pengolahan mineral.",
       domicile: "DOMISILI RESMI",
+      address: "Treasury Tower Lantai 16, District 8 SCBD Lot 28, Jl. Jend. Sudirman, Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta.",
       mapsOpen: "Buka di Google Maps",
       mapsAria: "Buka alamat kantor di Google Maps (terbuka di tab baru)",
       mapTitle: "Peta: kantor PT Bumi Sada Mineral, District 8 SCBD, Jakarta",
@@ -292,7 +294,7 @@ export const dictionaries = {
       opsHeading: "Operasional & Hukum",
       links: ["Portofolio Mineral", "ESG & Ketertelusuran", "Kepatuhan & Izin Ekspor"],
       officeHeading: "Kantor Eksekutif",
-      address: ["District 8 Treasury Tower, Lantai 28", "SCBD Lot 28, Jl. Jend. Sudirman Kav. 52-53", "Jakarta Selatan 12190, Indonesia"],
+      address: ["Treasury Tower, Lantai 16", "District 8 SCBD Lot 28", "Jl. Jend. Sudirman, Jakarta Selatan"],
       mapsAria: "Buka alamat kantor di Google Maps (terbuka di tab baru)",
       copyright: "© 2025 PT Bumi Sada Mineral. Hak Cipta Dilindungi.",
       desk: "District 8 SCBD • Meja Perdagangan Komoditas",

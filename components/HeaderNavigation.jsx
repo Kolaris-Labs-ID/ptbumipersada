@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Icon from "./Icon";
 import NavControls from "./NavControls";
@@ -55,61 +56,50 @@ export default function HeaderNavigation({ navItems }) {
     setIsOpen(false);
   };
 
-  const linkClass = (href) => `inline-flex min-h-11 items-center whitespace-nowrap border-b-2 px-1 text-sm leading-5 transition-colors ${activeHref === href ? "border-primary font-bold text-on-surface" : "border-transparent font-medium text-on-surface-variant hover:text-primary"}`;
+  const linkClass = (href) =>
+    `inline-flex h-10 items-center whitespace-nowrap rounded-full px-3 text-[13px] leading-5 transition-colors ${
+      activeHref === href
+        ? "bg-on-surface/5 font-bold text-on-surface"
+        : "font-medium text-on-surface-variant hover:text-on-surface"
+    }`;
+
+  const ctaClass =
+    "inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-on-surface px-5 text-label-caps uppercase tracking-wider text-surface transition-colors hover:bg-primary hover:text-on-primary";
 
   return (
-    <>
-      <nav aria-label={d.navUi.main} className="hidden xl:col-start-2 xl:block xl:justify-self-center">
-        <ul className="flex items-center gap-5 2xl:gap-8">
-          {navItems.map(([label, href]) => (
-            <li key={href} className="whitespace-nowrap">
-              <Link href={href} onClick={() => handleNavClick(href)} className={linkClass(href)} aria-current={activeHref === href ? "location" : undefined}>
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* Desktop: kontrol bahasa/tema + tombol Inquire */}
-      <div className="hidden items-center justify-self-end gap-4 xl:col-start-3 xl:flex">
-        <NavControls />
-        <Link
-          href="#contact"
-          onClick={() => handleNavClick("#contact")}
-          className="inline-flex min-h-11 items-center whitespace-nowrap bg-primary px-5 py-2.5 text-label-caps uppercase tracking-wider text-on-primary transition-colors hover:bg-primary-container"
-        >
-          <span>{d.navUi.inquire}</span><Icon name="arrow_forward" className="ml-2 text-[16px]" />
+    // Lebar & padding sama persis dengan `wrap` di page.js (max-w-7xl px-6 lg:px-12)
+    <div className="relative mx-auto h-full w-full max-w-7xl px-6 pt-3 lg:px-12">
+      {/* Satu kapsul selebar konten: tepi kiri/kanan sejajar dengan teks */}
+      <div className="pointer-events-auto relative flex h-14 w-full items-center justify-between gap-3 rounded-full border border-on-surface/10 bg-surface-container-lowest/80 pl-4 pr-2 shadow-md backdrop-blur-xl xl:gap-4 xl:pl-5">
+        {/* Logo */}
+        <Link href="/" aria-label="PT Bumi Sada Mineral" className="flex shrink-0 items-center gap-2.5">
+          <Image
+            src="/icon.png"
+            alt="Bumi Sada Mineral logo"
+            width={512}
+            height={512}
+            priority
+            className="h-9 w-9 object-contain"
+          />
+          <span className="flex flex-col whitespace-nowrap">
+            <span className="font-headline-sm text-[17px] font-extrabold uppercase leading-none tracking-[-0.03em] text-on-surface">
+              Bumi Sada
+            </span>
+            <span className="mt-0.5 text-[9px] font-semibold uppercase leading-none tracking-[0.3em] text-primary">
+              Mineral
+            </span>
+          </span>
         </Link>
-      </div>
 
-      {/* Tablet/mobile: kontrol (mulai layar sm) + hamburger */}
-      <div className="flex items-center justify-self-end gap-2 xl:hidden">
-        <NavControls className="hidden sm:flex" />
-        <button
-          type="button"
-          aria-label={isOpen ? d.navUi.close : d.navUi.open}
-          aria-expanded={isOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setIsOpen((open) => !open)}
-          className="inline-flex h-11 w-11 items-center justify-center text-on-surface transition-colors hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        >
-          <Icon name={isOpen ? "close" : "menu"} className="text-[24px]" />
-        </button>
-      </div>
-
-      <div
-        id="mobile-navigation"
-        className={`${isOpen ? "block" : "hidden"} absolute left-1/2 top-full w-screen -translate-x-1/2 border-b border-on-surface/15 bg-surface-container-lowest px-6 pb-5 pt-2 shadow-lg xl:hidden`}
-      >
-        <nav aria-label={d.navUi.mobile}>
-          <ul className="flex flex-col">
+        {/* Menu desktop: mengisi ruang tengah */}
+        <nav aria-label={d.navUi.main} className="hidden min-w-0 flex-1 justify-center xl:flex">
+          <ul className="flex items-center gap-0.5">
             {navItems.map(([label, href]) => (
-              <li key={href}>
+              <li key={href} className="whitespace-nowrap">
                 <Link
                   href={href}
                   onClick={() => handleNavClick(href)}
-                  className={`flex min-h-11 items-center whitespace-nowrap border-l-2 px-4 py-2 text-sm transition-colors ${activeHref === href ? "border-primary font-bold text-on-surface" : "border-transparent font-medium text-on-surface-variant hover:text-primary"}`}
+                  className={linkClass(href)}
                   aria-current={activeHref === href ? "location" : undefined}
                 >
                   {label}
@@ -117,13 +107,70 @@ export default function HeaderNavigation({ navItems }) {
               </li>
             ))}
           </ul>
-          <Link href="#contact" onClick={() => handleNavClick("#contact")} className="mt-3 inline-flex min-h-11 w-full items-center justify-center whitespace-nowrap bg-primary px-5 py-2.5 text-label-caps uppercase tracking-wider text-on-primary transition-colors hover:bg-primary-container">
-            <span>{d.navUi.inquire}</span><Icon name="arrow_forward" className="ml-2 text-[16px]" />
-          </Link>
-          {/* Layar kecil: kontrol ada di dalam menu */}
-          <NavControls className="mt-4 justify-center sm:hidden" />
         </nav>
+
+        {/* Kanan desktop: CTA + bahasa/tema */}
+        <div className="hidden shrink-0 items-center gap-3 xl:flex">
+          <Link href="#contact" onClick={() => handleNavClick("#contact")} className={ctaClass}>
+            <span>{d.navUi.inquire}</span>
+            <Icon name="arrow_outward" className="ml-1.5 hidden text-[15px] 2xl:inline-block" />
+          </Link>
+          <span className="h-6 w-px bg-on-surface/10" aria-hidden="true" />
+          <NavControls />
+        </div>
+
+        {/* Tablet/mobile: kontrol (mulai layar sm) + hamburger */}
+        <div className="flex items-center gap-1 xl:hidden">
+          <NavControls className="hidden sm:flex" />
+          <button
+            type="button"
+            aria-label={isOpen ? d.navUi.close : d.navUi.open}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsOpen((open) => !open)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-on-surface transition-colors hover:bg-on-surface/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <Icon name={isOpen ? "close" : "menu"} className="text-[24px]" />
+          </button>
+        </div>
+
+        {/* Dropdown mobile: kartu yang menempel di bawah kapsul */}
+        <div
+          id="mobile-navigation"
+          className={`${isOpen ? "block" : "hidden"} absolute inset-x-0 top-full mt-2 rounded-3xl border border-on-surface/10 bg-surface-container-lowest px-4 pb-4 pt-3 shadow-xl xl:hidden`}
+        >
+          <nav aria-label={d.navUi.mobile}>
+            <ul className="flex flex-col gap-1">
+              {navItems.map(([label, href]) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    onClick={() => handleNavClick(href)}
+                    className={`flex min-h-11 items-center rounded-full px-4 text-sm transition-colors ${
+                      activeHref === href
+                        ? "bg-on-surface/5 font-bold text-on-surface"
+                        : "font-medium text-on-surface-variant hover:text-on-surface"
+                    }`}
+                    aria-current={activeHref === href ? "location" : undefined}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="#contact"
+              onClick={() => handleNavClick("#contact")}
+              className={`mt-3 flex min-h-11 w-full ${ctaClass}`}
+            >
+              <span>{d.navUi.inquire}</span>
+              <Icon name="arrow_outward" className="ml-2 text-[16px]" />
+            </Link>
+            {/* Layar kecil: kontrol ada di dalam menu */}
+            <NavControls bordered className="mt-4 justify-center sm:hidden" />
+          </nav>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

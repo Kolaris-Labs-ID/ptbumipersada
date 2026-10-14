@@ -8,7 +8,7 @@ const LANGS = [
   ["en", "EN", "English"],
 ];
 
-export default function NavControls({ className = "" }) {
+export default function NavControls({ className = "", bordered = false }) {
   const { lang, setLang, d } = useLang();
   const [theme, setTheme] = useState(null);
 
@@ -30,13 +30,14 @@ export default function NavControls({ className = "" }) {
 
   const isDark = theme === "dark";
   const label = isDark ? d.theme.toLight : d.theme.toDark;
+  const edge = bordered ? "border border-on-surface/20" : "bg-on-surface/5";
 
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
+    <div className={`flex items-center gap-1.5 ${className}`}>
       <div
         role="group"
         aria-label={d.theme.langGroup}
-        className="flex h-10 overflow-hidden rounded-full border border-on-surface/20"
+        className={`flex h-9 overflow-hidden rounded-full ${edge}`}
       >
         {LANGS.map(([code, short, name]) => (
           <button
@@ -47,7 +48,7 @@ export default function NavControls({ className = "" }) {
             aria-label={name}
             title={name}
             className={`px-3 font-label-caps text-xs font-bold tracking-wider transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-              lang === code ? "bg-primary text-on-primary" : "text-on-surface hover:bg-surface-container"
+              lang === code ? "rounded-full bg-primary text-on-primary" : "text-on-surface hover:bg-on-surface/10"
             }`}
           >
             {short}
@@ -60,9 +61,9 @@ export default function NavControls({ className = "" }) {
         onClick={toggle}
         aria-label={label}
         title={label}
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-on-surface/20 text-on-surface transition-colors hover:bg-surface-container focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className={`flex h-9 w-9 items-center justify-center rounded-full text-on-surface transition-colors hover:bg-on-surface/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${edge}`}
       >
-        {theme && <Icon name={isDark ? "light_mode" : "dark_mode"} className="text-[20px]" />}
+        {theme && <Icon name={isDark ? "light_mode" : "dark_mode"} className="text-[18px]" />}
       </button>
     </div>
   );
