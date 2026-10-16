@@ -2,7 +2,7 @@ export const dictionaries = {
   en: {
     nav: ["Home", "About Us", "Services & Commodities", "Vision & Mission", "Why Us", "Contact"],
     navUi: {
-      inquire: "Inquire Supply",
+      inquire: "Contact Us",
       open: "Open navigation menu",
       close: "Close navigation menu",
       main: "Main navigation",
@@ -153,7 +153,7 @@ export const dictionaries = {
   id: {
     nav: ["Beranda", "Tentang Kami", "Layanan & Komoditas", "Visi & Misi", "Mengapa Kami", "Kontak"],
     navUi: {
-      inquire: "Ajukan Pasokan",
+      inquire: "Hubungi Kami",
       open: "Buka menu navigasi",
       close: "Tutup menu navigasi",
       main: "Navigasi utama",

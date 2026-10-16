@@ -46,9 +46,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="w-full bg-surface-container">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-2 flex flex-col sm:flex-row items-center justify-between text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider gap-2">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-3 flex items-center justify-center text-center text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
           <span>{f.copyright}</span>
-          <span>{f.desk}</span>
         </div>
       </div>
     </footer>

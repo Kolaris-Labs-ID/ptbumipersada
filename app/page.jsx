@@ -15,6 +15,9 @@ const wrap = "max-w-7xl mx-auto px-6 lg:px-12";
 const eyebrow = "font-label-caps text-label-caps tracking-widest uppercase font-bold";
 const h2 = "font-headline-lg text-headline-lg uppercase tracking-tight";
 
+// Warna ikon core value di atas background navy (versi terang supaya kontras)
+const pillarTones = ["text-primary-fixed-dim", "text-secondary-fixed-dim", "text-tertiary-fixed-dim"];
+
 export default function Home() {
   const { d } = useLang();
 
@@ -78,27 +81,21 @@ export default function Home() {
             </div>
             <p className="max-w-3xl min-w-0 font-body-lg text-body-lg leading-relaxed text-on-surface">{d.about.body}</p>
           </div>
+
+          {/* Core values / key strengths */}
           <div className="keep-light w-full bg-on-surface">
             <div className={`${wrap} grid min-w-0 grid-cols-1 md:grid-cols-3`}>
-              {d.about.details.map(({ label, value }) => (
-                <div key={label} className="min-w-0 border-b border-white/10 py-8 last:border-b-0 md:border-b-0 md:border-l md:first:border-l-0 md:pl-6 md:first:pl-0">
-                  <span className="block font-label-caps text-label-caps uppercase text-tertiary-fixed">{label}</span>
-                  <span className="mt-2 block break-words font-body-sm text-body-sm font-semibold text-white">{value}</span>
-                </div>
-              ))}
+              {d.pillars.map((p, i) => {
+                const [icon] = pillarMeta[i];
+                return (
+                  <div key={p.title} className="min-w-0 border-b border-white/10 py-8 last:border-b-0 md:border-b-0 md:border-l md:py-10 md:pl-8 md:pr-6 md:first:border-l-0 md:first:pl-0">
+                    <Icon name={icon} className={`${pillarTones[i]} mb-3 text-[28px]`} />
+                    <h3 className="font-headline-sm text-lg leading-tight uppercase text-white">{p.title}</h3>
+                    <p className="mt-2 font-body-sm text-body-sm text-surface-container-high">{p.text}</p>
+                  </div>
+                );
+              })}
             </div>
-          </div>
-          <div className={`${wrap} grid min-w-0 grid-cols-1 gap-x-6 gap-y-8 py-10 sm:grid-cols-3 lg:py-12`}>
-            {d.pillars.map((p, i) => {
-              const [icon, color] = pillarMeta[i];
-              return (
-                <div key={p.title} className="min-w-0 border-t border-slate-200 pt-4 dark:border-white/10">
-                  <Icon name={icon} className={`${color} mb-2 text-[26px]`} />
-                  <h4 className="font-headline-sm text-lg leading-tight uppercase text-on-surface">{p.title}</h4>
-                  <p className="mt-2 font-body-sm text-body-sm text-on-surface-variant">{p.text}</p>
-                </div>
-              );
-            })}
           </div>
         </section>
 
@@ -141,7 +138,6 @@ export default function Home() {
               <div className="keep-light relative isolate lg:col-span-5 overflow-hidden bg-on-surface text-surface p-6 lg:p-14 flex flex-col justify-between">
                 <Icon name="visibility" className="absolute right-5 top-20 -z-10 text-[clamp(10rem,22vw,20rem)] leading-none text-surface opacity-[0.06] pointer-events-none" />
                 <div className="relative space-y-8">
-                  <span className={`${eyebrow} text-surface/75`}>{d.vision.eyebrow}</span>
                   <h3 className={`${h2} text-surface`}>{d.vision.title}</h3>
                   <blockquote className="max-w-[28em] border-l-2 border-primary pl-4 text-[clamp(1.125rem,1.8vw,1.5rem)] leading-[1.45] italic text-white">
                     <span className="text-tertiary-fixed not-italic">“</span>{d.vision.quote}<span className="text-tertiary-fixed not-italic">”</span>
@@ -169,7 +165,6 @@ export default function Home() {
               </div>
               <div className="lg:col-span-7 bg-surface-container-lowest p-10 lg:p-14 flex flex-col justify-between">
                 <div className="space-y-8">
-                  <span className={`${eyebrow} text-primary`}>{d.mission.eyebrow}</span>
                   <h3 className={`${h2} text-on-surface`}>{d.mission.title}</h3>
                   <div className="space-y-6">
                     {d.mission.items.map((m, i) => (
@@ -215,8 +210,7 @@ export default function Home() {
         <section id="contact" className="keep-light w-full py-28 bg-on-surface text-surface">
           <div className={`${wrap} space-y-20`}>
             <div>
-              <span className={`${eyebrow} text-primary-fixed`}>{d.contact.eyebrow}</span>
-              <h2 className={`${h2} text-surface mt-2`}>{d.contact.title}</h2>
+              <h2 className={`${h2} text-surface`}>{d.contact.title}</h2>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               <ContactForm />
@@ -257,15 +251,15 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   {[
                     ["call", d.contact.phoneLabel, PHONE, PHONE_HREF, d.contact.phoneSub],
                     ["mail", d.contact.emailLabel, EMAIL, EMAIL_HREF, d.contact.emailSub],
                   ].map(([icon, label, v, href, sub]) => (
-                    <div key={icon} className="bg-surface/5 p-6 rounded backdrop-blur-md space-y-2">
+                    <div key={icon} className="bg-surface/5 p-5 sm:p-6 rounded backdrop-blur-md space-y-2">
                       <div className="flex items-center gap-2 text-primary-fixed"><Icon name={icon} className="text-[20px]" /><span className="font-label-caps text-label-caps uppercase tracking-wider">{label}</span></div>
-                      <p className="font-title-md text-title-md text-surface font-semibold break-all">
-                        <a href={href} className="underline-offset-4 transition-colors hover:text-primary-fixed hover:underline">{v}</a>
+                      <p className="font-title-md text-title-md text-surface font-semibold">
+                        <a href={href} className="whitespace-nowrap text-[15px] underline-offset-4 transition-colors hover:text-primary-fixed hover:underline">{v}</a>
                       </p>
                       <span className="font-body-sm text-body-sm text-surface-container-high block">{sub}</span>
                     </div>
